@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/', function(){
+    return "<a href='/admin'>admin</a>";
+});
+
+Route::get('/admin', function(){
+    return redirect('/admin/home');
+});
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/admin/home', 'Admin\HomeController@getHome');
+});
+
+Route::get('/auth/login', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/auth/logout', 'Auth\AuthController@getLogout');

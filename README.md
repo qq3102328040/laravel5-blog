@@ -18,5 +18,10 @@ protected $username = 'name';
 即可实现使用用户名登陆.
 
 前端还是不会,登陆页面粘的bootstrap的模板,值得注意的是`style`标签要在`link`标签之后达到对bootstrap覆盖的效果.
+更新:把style换成了link,放在public的单独文件里,发现不可用,加入
+```
+rel="stylesheet"
+```
+后正常, 百度到这是告诉浏览器怎么去编码 http://www.w3school.com.cn/tags/att_link_rel.asp
 
 写好了导航栏`navbar`,感谢凯哥帮忙解决问题.

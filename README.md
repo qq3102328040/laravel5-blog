@@ -18,3 +18,5 @@ protected $username = 'name';
 即可实现使用用户名登陆.
 
 前端还是不会,登陆页面粘的bootstrap的模板,值得注意的是`style`标签要在`link`标签之后达到对bootstrap覆盖的效果.
+
+写好了导航栏`navbar`,感谢凯哥帮忙解决问题.

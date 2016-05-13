@@ -52,6 +52,10 @@ protected $fillable = array('title', 'text', 'author', 'last_edit_time');
 ```
 后解决
 
+更改了AuthController, 禁止普通用户注册, 参考http://laravelacademy.org/post/2279.html
+有时间应该读读Auth的代码.
+
+
 问题:
  1. Auth->user()返回的是一个类,暂时没发现返回名字字符串的方法(使用id Auth::id(), 返回一个数(弱类型语言只能这么理解))
  2. 一开始字段不是text而是content(和数据库字段不同) $request->content 内容为提交的所有东西, 暂时不知道为什么.

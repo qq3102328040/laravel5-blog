@@ -36,7 +36,7 @@ class ContentCreateRequest extends Request
         return [
             'title' => $this->title,
             'text' => $this->text,
-            'author' => 1,
+            'author' => Auth::id(),
             'last_edit_time' => Carbon::now()->toDateTimeString(),
         ];
     }

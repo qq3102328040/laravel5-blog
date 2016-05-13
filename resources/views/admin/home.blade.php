@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('content')
+@section('body')
 
 
 

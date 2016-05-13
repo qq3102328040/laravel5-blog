@@ -23,8 +23,9 @@ Route::get('/admin', function(){
     return redirect('/admin/home');
 });
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/admin/home', 'Admin\HomeController@getHome');
+Route::group(['middleware' => 'auth', 'prefix'=>'admin'], function(){
+    Route::get('home', 'Admin\HomeController@getHome');
+    Route::resource('content', 'Admin\ContentController');
 });
 
 Route::get('/auth/login', 'Auth\AuthController@getLogin');

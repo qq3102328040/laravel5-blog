@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">{{ config('blog.blog_name') }}</a>
+            <a class="navbar-brand" href="{{ url('/admin/home') }}">{{ config('blog.blog_name') }}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

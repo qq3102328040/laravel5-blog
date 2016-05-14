@@ -57,9 +57,40 @@ protected $fillable = array('title', 'text', 'author', 'last_edit_time');
 
 
 问题:
- 1. Auth->user()返回的是一个类,暂时没发现返回名字字符串的方法(使用id Auth::id(), 返回一个数(弱类型语言只能这么理解))
+ 1. (已解决:Auth->user()->name就是...)Auth->user()返回的是一个类,暂时没发现返回名字字符串的方法(使用id Auth::id(), 返回一个数(弱类型语言只能这么理解))
  2. 一开始字段不是text而是content(和数据库字段不同) $request->content 内容为提交的所有东西, 暂时不知道为什么.
 
 
 
 [1]: https://github.com/rvum
+
+
+###2016年05月14日
+
+
+####完成了管理文章页面
+
+在blade中使用分页`$content->render()`时发现
+
+使用{{ $content->render }}时输出
+
+```
+&lt;ul class=&quot;pagination&quot;&gt;&lt;li class=&quot;disabled&quot;&gt;&lt;span&gt;&laquo;&lt;/span&gt;&lt;/li&gt; &lt;li class=&quot;active&quot;&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://localhost:8000/admin/content?page=2&quot;&gt;2&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://localhost:8000/admin/content?page=3&quot;&gt;3&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;http://localhost:8000/admin/content?page=2&quot; rel=&quot;next&quot;&gt;&raquo;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+//页面为
+ <ul class="pagination"><li class="disabled"><span>&laquo;</span></li> <li class="active"><span>1</span></li><li><a href="http://localhost:8000/admin/content?page=2">2</a></li><li><a href="http://localhost:8000/admin/content?page=3">3</a></li> <li><a href="http://localhost:8000/admin/content?page=2" rel="next">&raquo;</a></li></ul>
+```
+ 改用{!! $content->render() !!} 后浏览器正常解析
+
+ 这是因为 {!!  !!} 会对输出进行解析 而 {{  }} 会对输出进行转义
+ 在这个教程里有提到过https://laracasts.com/series/laravel-5-fundamentals
+
+使用Carbon类美化时间参考http://laravel5-book.kejyun.com/package/tool/package-tool-carbon.html
+输出时用
+```
+\Carbon\Carbon::parse($content->created_at)->format('Y-m-d H:i')
+```
+将秒去掉了.
+
+问题
+ 1. 表格对其问题,想让其他列固定,只有标题列长度浮动,不知道怎么弄
+ 2. 还有就是不知道如果自己需要写css怎么和bootstrap一起.

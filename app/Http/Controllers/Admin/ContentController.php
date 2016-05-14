@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
 {
@@ -17,7 +18,8 @@ class ContentController extends Controller
      */
     public function index()
     {
-        return view('admin.content.index');
+        $contents = Content::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.content.index', compact('contents'));
     }
 
     /**

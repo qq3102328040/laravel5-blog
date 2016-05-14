@@ -10,7 +10,7 @@
             <h2>管理文章</h2>
         </div>
         <div class="container">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th></th>
@@ -19,19 +19,30 @@
                         <th>作者</th>
                         <th>分类</th>
                         <th>日期</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><input type="checkbox" value="13" name="cid"/></td>
-                        <td>1</td>
-                        <td>为何如此二笔</td>
-                        <td>阿迪民</td>
-                        <td>日记</td>
-                        <td>2016年05月13日19:14:54</td>
-                    </tr>
+                    @foreach($contents as $content)
+                        <tr>
+                            <td><input type="checkbox" value="{{ $content->cid }}" name="cid"/></td>
+                            <td>{{ $content->cid }}</td>
+                            <td>{{ $content->title }}</td>
+                            <td>{{ $content->author }}</td>
+                            <td>日记</td>
+                            <td>{{ \Carbon\Carbon::parse($content->created_at)->format('Y-m-d H:i') }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-xs">访问</button>
+                                <button type="button" class="btn btn-primary btn-xs">修改</button>
+                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="pull-right">
+            {!! $contents->render() !!}
         </div>
     </div>
 @stop

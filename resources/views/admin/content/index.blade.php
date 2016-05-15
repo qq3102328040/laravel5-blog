@@ -28,7 +28,7 @@
                             <td><input type="checkbox" value="{{ $content->cid }}" name="cid"/></td>
                             <td>{{ $content->cid }}</td>
                             <td>{{ $content->title }}</td>
-                            <td>{{ App\User::where('id', $content->author)->firstOrFail()->name }}</td>
+                            <td>{{ App\User::where('id', $content->author)->first()->name }}</td>
                             <td>日记</td>
                             <td>{{ \Carbon\Carbon::parse($content->created_at)->format('Y-m-d H:i') }}</td>
                             <td>

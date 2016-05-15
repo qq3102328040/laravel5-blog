@@ -94,3 +94,25 @@ protected $fillable = array('title', 'text', 'author', 'last_edit_time');
 问题
  1. 表格对其问题,想让其他列固定,只有标题列长度浮动,不知道怎么弄
  2. 还有就是不知道如果自己需要写css怎么和bootstrap一起.
+
+
+ ###2016年05月15日
+
+####细节修改
+
+在Content Model上添加
+```
+protected $dates = ['last_edit_time'];
+```
+使自己添加的字段'last_edit_time'被解析成Carbon类的形式,方便操作
+
+看了修改器, 想改一下, 结果2b的在request里改半天.. 这玩意应该放在model里, 类似java的set 和 get方法, 通过追踪可以发现Model.php里有setAttribute方法.
+关于动态修改Query Scope, 没看懂..
+参考
+http://laravelacademy.org/post/146.html
+https://laravist.com/article/16
+https://laracasts.com/series/laravel-5-fundamentals/episodes/11
+http://blog.qiji.tech/archives/2578
+
+问题:
+ 1. 作者为0时会抛异常,直接error了, 不知道怎么处理.

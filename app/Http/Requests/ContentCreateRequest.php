@@ -37,7 +37,7 @@ class ContentCreateRequest extends Request
             'title' => $this->title,
             'text' => $this->text,
             'author' => Auth::id(),
-            'last_edit_time' => Carbon::now()->toDateTimeString(),
+            'last_edit_time' => Carbon::now(),
         ];
     }
 }

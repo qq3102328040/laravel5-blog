@@ -96,7 +96,7 @@ protected $fillable = array('title', 'text', 'author', 'last_edit_time');
  2. 还有就是不知道如果自己需要写css怎么和bootstrap一起.
 
 
- ###2016年05月15日
+###2016年05月15日
 
 ####细节修改
 
@@ -116,3 +116,7 @@ http://blog.qiji.tech/archives/2578
 
 问题:
  1. 作者为0时会抛异常,直接error了, 不知道怎么处理.
+
+ ###2016年05月16日
+
+ 添加文章  增加错误提示

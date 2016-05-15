@@ -18,8 +18,17 @@
                 <div class="form-group">
                     <textarea name="text" class="form-control" rows="15"></textarea>
                 </div>
-                <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-primary">发布文章</button>
+                <div class="form-group">
+                    @if($errors->any())
+                        <ul class="alert-danger">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    <span class="pull-right">
+                        <button type="submit" class="btn btn-primary">发布文章</button>
+                    </span>
                 </div>
             </form>
         </div>

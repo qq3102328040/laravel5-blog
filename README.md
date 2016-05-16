@@ -117,6 +117,14 @@ http://blog.qiji.tech/archives/2578
 问题:
  1. 作者为0时会抛异常,直接error了, 不知道怎么处理.
 
- ###2016年05月16日
 
- 添加文章  增加错误提示
+###2016年05月16日
+
+####添加文章  增加错误提示
+
+####添加关联模型方法
+
+参考https://phphub.org/topics/364
+一开始报错, 找了半天也没找到答案, 后来百度了下http://stackoverflow.com/questions/18084310/laravel-class-not-found-with-one-to-many  按这种方法加上绝对路径 解决
+
+注意 hasMany 和 belongsTo 方法的参数是不一样的, 因为文章用的是cid(略蛋疼, find方法都不能用)而不是id , 所以一开始写的是cid, 报错 总不明白哪错了, 后来追踪了下代码, 明白了, 具体不说了, 可以追踪下代码看看

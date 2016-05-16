@@ -11,4 +11,9 @@ class Content extends Model
     protected $fillable = ['title', 'text', 'author', 'last_edit_time'];
 
     protected $dates = ['last_edit_time'];
+
+    public function belongsToUser(){
+        return $this->belongsTo('\App\User', 'author', 'id');
+    }
+
 }

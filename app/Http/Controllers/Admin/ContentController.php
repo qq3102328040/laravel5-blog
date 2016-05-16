@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Content;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,6 +19,8 @@ class ContentController extends Controller
      */
     public function index()
     {
+//        dd(User::find(1)->hasManyContent);
+//        dd(Content::where('cid', 1)->first()->belongsToUser);
         $contents = Content::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.content.index', compact('contents'));
     }

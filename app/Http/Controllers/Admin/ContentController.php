@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Content;
-use App\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\ContentRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -41,7 +40,7 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\ContentCreateRequest $request)
+    public function store(ContentRequest $request)
     {
         Content::create($request->postFillData());
         return redirect()->route('admin.content.index');
@@ -66,7 +65,8 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $content = Content::where(['cid' => $id])->first();
+        return view('admin.content.edit', compact('content'));
     }
 
     /**
@@ -76,9 +76,11 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContentRequest $request, $id)
     {
-        //
+        $content = Content::where(['cid' => $id])->first();
+        $content->update($request->postFillData());
+        return redirect()->route('admin.content.index');
     }
 
     /**

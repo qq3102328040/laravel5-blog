@@ -5,32 +5,5 @@
 @stop
 
 @section('body')
-    <div class="container">
-        <div class="container">
-            <h2>撰写文章</h2>
-        </div>
-        <div class="container">
-            <form action="{{ action('Admin\ContentController@store') }}" method="post">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="form-group">
-                    <input type="text" name="title" class="form-control" id="" placeholder="标题">
-                </div>
-                <div class="form-group">
-                    <textarea name="text" class="form-control" rows="15"></textarea>
-                </div>
-                <div class="form-group">
-                    @if($errors->any())
-                        <ul class="alert-danger">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                    <span class="pull-right">
-                        <button type="submit" class="btn btn-primary">发布文章</button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
+    @include('admin.content.content', ['h2title' => '撰写文章', 'button' => '发布文章'])
 @stop

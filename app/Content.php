@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
+    protected $primaryKey = 'cid';
+
     protected $table = 'contents';
 
     protected $fillable = ['title', 'text', 'author', 'last_edit_time'];

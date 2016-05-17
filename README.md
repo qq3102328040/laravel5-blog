@@ -128,3 +128,21 @@ http://blog.qiji.tech/archives/2578
 一开始报错, 找了半天也没找到答案, 后来百度了下http://stackoverflow.com/questions/18084310/laravel-class-not-found-with-one-to-many  按这种方法加上绝对路径 解决
 
 注意 hasMany 和 belongsTo 方法的参数是不一样的, 因为文章用的是cid(略蛋疼, find方法都不能用)而不是id , 所以一开始写的是cid, 报错 总不明白哪错了, 后来追踪了下代码, 明白了, 具体不说了, 可以追踪下代码看看
+
+问题:
+ 1. 是简单了不少, 但一下把user表的类拿过来, 安全吗?
+ 2. 效率呢?
+
+
+###2016年05月17日
+
+####完成编辑文章
+
+将创建文章和编辑文章共用, 发现问题, 编辑文章需要变量, 可以在页面上用isset()方法解决.或者中间件?(不会)
+参考https://segmentfault.com/q/1010000004513381
+
+一开始因为content表的主键不是id而各种蛋疼, 后来看了看Model类的源代码, 发现
+```
+protected $primaryKey = 'id';
+```
+后将content模型的`$primaryKey`设置为'cid', 完美解决

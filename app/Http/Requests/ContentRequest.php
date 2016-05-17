@@ -7,7 +7,7 @@ use App\Http\Requests\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class ContentCreateRequest extends Request
+class ContentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

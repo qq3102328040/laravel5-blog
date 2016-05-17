@@ -32,8 +32,8 @@
                             <td>日记</td>
                             <td>{{ \Carbon\Carbon::parse($content->created_at)->format('Y-m-d H:i') }}</td>
                             <td>
-                                <button type="button" class="btn btn-success btn-xs">访问</button>
-                                <button type="button" class="btn btn-primary btn-xs">修改</button>
+                                <button type="button" class="btn btn-success btn-xs" onclick="">访问</button>
+                                <button type="button" class="btn btn-primary btn-xs" onclick="location.href='{{ action('Admin\ContentController@edit', $content->cid) }}'">修改</button>
                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                             </td>
                         </tr>

@@ -146,3 +146,9 @@ http://blog.qiji.tech/archives/2578
 protected $primaryKey = 'id';
 ```
 后将content模型的`$primaryKey`设置为'cid', 完美解决
+
+
+###2016年05月18日
+增加了metas表, 准备把标签和栏目一块写, 创建和管理也写一块.
+
+

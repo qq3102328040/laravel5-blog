@@ -151,4 +151,9 @@ protected $primaryKey = 'id';
 ###2016年05月18日
 增加了metas表, 准备把标签和分类(栏目)一块写, 创建和管理也写一块.
 
+###2016年05月19日
 
+####完成了分类部分
+
+问题
+ 1. 在CategoryController中 index()方法和 edit()方法都传入了category的列表, 感觉这是一种浪费, 应该可以合并到一起. 尝试了用iframe , 失败..

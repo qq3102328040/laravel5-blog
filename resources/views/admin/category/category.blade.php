@@ -18,7 +18,7 @@
             <td>{{ $category->count }}</td>
             <td>
                 <button type="button" class="btn btn-success btn-xs" onclick="">访问</button>
-                <button type="button" class="btn btn-primary btn-xs" onclick="">修改</button>
+                <button type="button" class="btn btn-primary btn-xs" onclick="location.href='{{ action('Admin\CategoryController@edit', $category->mid) }}'">修改</button>
                 <button type="button" class="btn btn-danger btn-xs">删除</button>
             </td>
         </tr>

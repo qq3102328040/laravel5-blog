@@ -64,7 +64,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        
+        $categorys = Meta::category()->orderBy('created_at', 'desc')->paginate(10);
+        $data = Meta::category()->where(['mid' => $id])->first();
+        return view('admin.category.edit')->with([
+            'categorys' => $categorys,
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -74,9 +79,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        Meta::category()->where(['mid' => $id])->first()->update($request->postFillData());
+        return redirect(route('admin.category.index'));
     }
 
     /**

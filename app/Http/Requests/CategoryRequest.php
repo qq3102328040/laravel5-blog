@@ -33,7 +33,7 @@ class CategoryRequest extends Request
             'name' => $this->name,
             'description' => $this->description,
             'type' => 'category',
-            'count' => 0
+            'count' => isset($this->count)? $this->count : 0,
         ];
     }
 }

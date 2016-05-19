@@ -26,6 +26,7 @@ Route::get('/admin', function(){
 Route::group(['middleware' => 'auth', 'prefix'=>'admin'], function(){
     Route::get('home', 'Admin\HomeController@getHome');
     Route::resource('content', 'Admin\ContentController');
+    Route::resource('category', 'Admin\CategoryController');
 });
 
 Route::get('/auth/login', 'Auth\AuthController@getLogin');

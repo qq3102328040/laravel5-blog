@@ -10,8 +10,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新增<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ action('Admin\ContentController@create') }}">文章</a></li>
-                        <li><a href="#">分类</a></li>
-                        <li><a href="#">标签</a></li>
                         <li><a href="#">页面</a></li>
                     </ul>
                 </li>
@@ -20,7 +18,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ action('Admin\ContentController@index') }}">文章</a></li>
                         <li><a href="{{ action('Admin\CategoryController@index') }}">分类</a></li>
-                        <li><a href="#">标签</a></li>
+                        <li><a href="{{ action('Admin\TagController@index') }}">标签</a></li>
                         <li><a href="#">页面</a></li>
                     </ul>
                 </li>

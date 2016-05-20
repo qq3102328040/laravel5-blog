@@ -15,4 +15,8 @@ class Meta extends Model
     public function scopeCategory($query){
         return $query->where(['type' => 'category']);
     }
+    
+    public function scopeTag($query){
+        return $query->where(['type' => 'tag']);
+    }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Http\Requests\TagRequest;
 use App\Http\Controllers\Controller;
+use App\Meta;
 
 class TagController extends Controller
 {
@@ -16,7 +16,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Meta::tag()->orderBy('created_at', 'desc')->get();
+        return view('admin.tag.index', compact('tags'));
     }
 
     /**
@@ -35,9 +36,11 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        //
+        $tag = $request->postFillData();
+        Meta::create($tag);
+        return redirect(route('admin.tag.index'));
     }
 
     /**
@@ -59,7 +62,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

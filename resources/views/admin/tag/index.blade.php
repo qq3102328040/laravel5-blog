@@ -25,9 +25,6 @@
                     </div>
                     <div class="form-group">
                         @include('errors.list')
-                        <span class="pull-left">
-                            <button class="btn btn-danger">删除标签</button>
-                        </span>
                         <span class="pull-right">
                         <button type="submit" class="btn btn-primary">创建标签</button>
                         </span>

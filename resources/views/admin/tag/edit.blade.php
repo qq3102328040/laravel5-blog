@@ -27,10 +27,10 @@
                     <div class="form-group">
                         @include('errors.list')
                         <span class="pull-left">
-                            <button class="btn btn-danger">删除标签</button>
+                            <a class="btn btn-danger">删除标签</a>
                         </span>
                         <span class="pull-right">
-                        <button type="submit" class="btn btn-primary">修改标签</button>
+                            <button type="submit" class="btn btn-primary">修改标签</button>
                         </span>
                     </div>
                 </form>

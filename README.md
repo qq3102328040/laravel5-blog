@@ -157,3 +157,11 @@ protected $primaryKey = 'id';
 
 问题
  1. 在CategoryController中 index()方法和 edit()方法都传入了category的列表, 感觉这是一种浪费, 应该可以合并到一起. 尝试了用iframe , 失败..
+
+
+###2016年05月20日
+
+####完成标签创建
+
+问题:
+ 1. 管理标签分级那一堆冗余代码, 不知道如何处理

@@ -62,7 +62,12 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        
+        $tags = Meta::tag()->orderBy('created_at', 'desc')->get();
+        $data = Meta::tag()->where(['mid' => $id])->first();
+        return view('admin.tag.edit')->with([
+            'tags' => $tags,
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -72,9 +77,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TagRequest $request, $id)
     {
-        //
+        Meta::tag()->where(['mid' => $id])->first()->update($request->postFillData());
+        return redirect(route('admin.tag.index'));
     }
 
     /**

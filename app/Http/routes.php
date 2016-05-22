@@ -28,6 +28,15 @@ Route::group(['middleware' => 'auth', 'prefix'=>'admin'], function(){
     Route::resource('content', 'Admin\ContentController');
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('tag', 'Admin\TagController');
+
+    Route::get('file', function(){
+        return redirect('/admin/file/index');
+    });
+    Route::group(['prefix' => 'file'], function() {
+        Route::get('index', 'Admin\FileController@index');
+        Route::get('upload', 'Admin\FileController@getUpload');
+        Route::post('upload', 'Admin\FileController@postUpload');
+    });
 });
 
 Route::get('/auth/login', 'Auth\AuthController@getLogin');

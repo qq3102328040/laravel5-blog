@@ -4,6 +4,13 @@
     <title>管理标签</title>
 @stop
 
+@section('style')
+    <style>
+        #tag-list {
+            line-height: 40px;
+        }
+    </style>
+@stop
 
 @section('body')
     <div class="container">

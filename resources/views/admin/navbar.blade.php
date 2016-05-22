@@ -22,7 +22,7 @@
                         <li><a href="#">页面</a></li>
                     </ul>
                 </li>
-                <li><a href="#">文件</a></li>
+                <li><a href="{{ action('Admin\FileController@index') }}">文件</a></li>
                 <li><a href="#">设置</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

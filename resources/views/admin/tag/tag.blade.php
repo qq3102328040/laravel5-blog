@@ -1,4 +1,4 @@
-<div class="col-md-8" >
+<div class="col-md-8" id="tag-list">
     <h4>
         <span>文章数:&nbsp;&nbsp;</span>
         <span class="label label-default">0+</span>

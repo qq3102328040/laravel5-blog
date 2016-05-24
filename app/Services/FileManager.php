@@ -21,13 +21,21 @@ class FileManager
     {
         $folder = $this->cleanFolder($folder);
 
+        //实现了将路径拆开, 取前 n-1 个
         $breadcrumbs = $this->breadcrumbs($folder);
+//        dd($breadcrumbs);
         $slice = array_slice($breadcrumbs, -1);
-        $folderName = current($slice);
-        $breadcrumbs = array_slice($breadcrumbs, 0, -1);
+//        dd($slice);
+        $folderName = current($slice);//取出了当前文件夹名称
+//        dd($folderName);
+        if(!$slice == ['/' => 'root']){
+            $breadcrumbs = array_slice($breadcrumbs, 0, -1);//移除最后一个
+        }
+//        dd($breadcrumbs);
 
+        //获取目录列表, 拆开, 放数组里
         $subfolders = [];
-        foreach (array_unique($this->disk->directories($folder)) as $subfolder) {
+        foreach (($this->disk->directories($folder)) as $subfolder) {
             $subfolders["/$subfolder"] = basename($subfolder);
         }
 
@@ -36,14 +44,14 @@ class FileManager
             $files[] = $this->fileDetails($path);
         }
 
-        dd(
-            compact(
-            'folder',
-            'folderName',
-            'breadcrumbs',
-            'subfolders',
-            'files'
-        ));
+//        dd(
+//            compact(
+//            'folder',
+//            'folderName',
+//            'breadcrumbs',
+//            'subfolders',
+//            'files'
+//        ));
         return compact(
             'folder',
             'folderName',

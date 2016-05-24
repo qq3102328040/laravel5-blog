@@ -16,7 +16,11 @@
     <div class="container">
         <div>
             <span class="pull-left">
-                <h2>文件管理</h2>
+                <h2>文件管理
+                    @foreach($breadcrumbs as $path => $name)
+                        <a href="/admin/file/index?folder={{ $path }}">{{ $name }}/</a>
+                    @endforeach
+                </h2>
             </span>
             <span class="pull-right" id="right-button">
                 <a class="btn btn-success">新建文件夹</a>
@@ -35,28 +39,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($subfolders as $path => $name)
                     <tr>
-                        <td>2016-05-23 21:07:53.jpg</td>
-                        <td>image/jpeg</td>
-                        <td>2016年05月23日21:07:38</td>
-                        <td>100kb</td>
+                        <td><a href="/admin/file/index?folder={{ $path }}">{{ $name }}</a></td>
+                        <td>文件夹</td>
+                        <td></td>
+                        <td></td>
                         <td>
                             <button type="button" class="btn btn-success btn-xs" onclick="">访问</button>
                             <button type="button" class="btn btn-primary btn-xs" onclick="">修改</button>
                             <button type="button" class="btn btn-danger btn-xs">删除</button>
                         </td>
                     </tr>
+                    @endforeach
+                    @foreach($files as $file)
                     <tr>
-                        <td>2016-05-23 21:07:53.jpg</td>
-                        <td>image/jpeg</td>
-                        <td>2016年05月23日21:07:38</td>
-                        <td>100kb</td>
+                        <td>{{ $file['name'] }}</td>
+                        <td>{{ $file['mimeType'] }}</td>
+                        <td>{{ $file['modified'] }}</td>
+                        <td>{{ $file['size'] }}</td>
                         <td>
                             <button type="button" class="btn btn-success btn-xs" onclick="">访问</button>
                             <button type="button" class="btn btn-primary btn-xs" onclick="">修改</button>
                             <button type="button" class="btn btn-danger btn-xs">删除</button>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

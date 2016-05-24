@@ -23,7 +23,7 @@ class FileController extends Controller
         $folder = $request->get('folder');
         $data = $this->manager->folderInfo($folder);
 //        return view('admin.file.index');
-        return view('admin.file.index', compact('data'));
+        return view('admin.file.index', $data);
     }
 
     public function getUpload()

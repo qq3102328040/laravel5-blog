@@ -181,3 +181,8 @@ protected $primaryKey = 'id';
 
 ####先完成了文件管理视图
 先提交了, 跑步去
+
+
+###2016年05月24日
+
+文件管理写不出来, 无耻的抄袭了http://laravelacademy.org/post/2333.html#ipt_kb_toc_2333_4的manager类

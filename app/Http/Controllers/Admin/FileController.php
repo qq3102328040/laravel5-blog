@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Services\FileManager;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\FileRequest;
@@ -10,9 +11,19 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    public function index()
+    protected $manager;
+
+    public function __construct(FileManager $manager)
     {
-        return view('admin.file.index');
+        $this->manager = $manager;
+    }
+
+    public function index(Request $request)
+    {
+        $folder = $request->get('folder');
+        $data = $this->manager->folderInfo($folder);
+//        return view('admin.file.index');
+        return view('admin.file.index', compact('data'));
     }
 
     public function getUpload()

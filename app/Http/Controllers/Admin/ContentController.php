@@ -7,6 +7,7 @@ use App\Http\Requests\ContentRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Meta;
 use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
@@ -31,7 +32,8 @@ class ContentController extends Controller
      */
     public function create()
     {
-        return view('admin.content.create');
+        $categorys = Meta::category()->get();
+        return view('admin.content.create', compact('categorys'));
     }
 
     /**
@@ -66,7 +68,8 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::where(['cid' => $id])->first();
-        return view('admin.content.edit', compact('content'));
+        $cotegorys = Meta::category()->get();
+        return view('admin.content.edit', compact('content', 'categorys'));
     }
 
     /**

@@ -6,10 +6,10 @@
         <div class="col-md-9">
             <div>
                 @if(isset($content))
-                    <form action="{{ action('Admin\ContentController@update', $content->cid) }}" method="post">
+                    <form action="{{ action('Admin\ContentController@update', $content->cid) }}" method="post" id="form1">
                         <input type="hidden" name="_method" value="PATCH">
                         @else
-                            <form action="{{ action('Admin\ContentController@store') }}" method="post">
+                            <form action="{{ action('Admin\ContentController@store') }}" method="post" id="form1">
                                 @endif
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
@@ -30,8 +30,21 @@
         <div class="col-md-3">
             <div>
                 <h4>分类</h4>
-                <div>
-
+                <div class="container">
+                    <ul class="list-unstyled">
+                        @foreach($categorys as $category)
+                            <li>
+                                <input type="checkbox" name="category[]" value="{{ $category->mid }}" id="category-id-{{ $category->mid }}" form="form1">
+                                <label for="category-id-{{ $category->mid }}">{{ $category->name }}</label>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h4>标签</h4>
+                <div class="container">
+                    <input type="text" name="tag" class="">
                 </div>
             </div>
         </div>

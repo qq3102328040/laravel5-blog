@@ -8,6 +8,7 @@ use App\Http\Requests\ContentRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Meta;
+use App\Relationship;
 use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
@@ -19,8 +20,6 @@ class ContentController extends Controller
      */
     public function index()
     {
-//        dd(User::find(1)->hasManyContent);
-//        dd(Content::where('cid', 1)->first()->belongsToUser);
         $contents = Content::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.content.index', compact('contents'));
     }
@@ -32,7 +31,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        $categorys = Meta::category()->get();
+        $categorys = $this->getCategory();
         return view('admin.content.create', compact('categorys'));
     }
 
@@ -44,7 +43,8 @@ class ContentController extends Controller
      */
     public function store(ContentRequest $request)
     {
-        Content::create($request->postFillData());
+        $cid = Content::create($request->postFillCreateData())->cid;
+        $this->storeCategory($cid, $request->postFillCategoryData());
         return redirect()->route('admin.content.index');
     }
 
@@ -68,7 +68,7 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::where(['cid' => $id])->first();
-        $cotegorys = Meta::category()->get();
+        $categorys = $this->getCategory();
         return view('admin.content.edit', compact('content', 'categorys'));
     }
 
@@ -82,7 +82,7 @@ class ContentController extends Controller
     public function update(ContentRequest $request, $id)
     {
         $content = Content::where(['cid' => $id])->first();
-        $content->update($request->postFillData());
+        $content->update($request->postFillCreateData());
         return redirect()->route('admin.content.index');
     }
 
@@ -96,4 +96,20 @@ class ContentController extends Controller
     {
         //
     }
+    
+    public function getCategory()
+    {
+        return Meta::category()->get();
+    }
+
+    public function storeCategory($cid, $categorys)
+    {
+        if($categorys){
+            foreach ($categorys as $category){
+                Relationship::create(['cid' => $cid, 'mid' => $category]);
+            }
+        }
+    }
+    
+    
 }

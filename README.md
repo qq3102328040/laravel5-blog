@@ -194,3 +194,15 @@ protected $primaryKey = 'id';
 
 ###2016年05月26日
 添加了relationships表, 垃圾校园网又出问题了, 先修网
+
+###2016年05月27日
+
+####完成创建文章关联分类
+在创建文章页面添加栏目是, 使用的是checkbox, 但是接收时发现接收到的总是最后一个数, 查资料后发现, 将name=category改为name=category[], 接收的变为数组, 解决
+参考https://segmentfault.com/q/1010000005107466
+
+创建relationship时, 默认增加了时间戳字段导致失败, 在模型类中加入
+```
+public $timestamps = false;
+```
+解决

@@ -32,12 +32,24 @@ class ContentRequest extends Request
         ];
     }
 
-    public function postFillData(){
+    public function postFillCreateData(){
         return [
             'title' => $this->title,
             'text' => $this->text,
+            'category' => $this->category,
+            'tag' => $this->tag,
             'author' => Auth::id(),
             'last_edit_time' => Carbon::now(),
+        ];
+    }
+
+    public function postFillCategoryData(){
+        return $this->category;
+    }
+
+    public function postFillTagData(){
+        return [
+            'tag' => $this->tag,
         ];
     }
 }

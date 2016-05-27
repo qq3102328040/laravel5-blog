@@ -44,7 +44,7 @@
             <div>
                 <h4>标签</h4>
                 <div class="container">
-                    <input type="text" name="tag" class="">
+                    <input type="text" name="tag" class="" form="form1">
                 </div>
             </div>
         </div>

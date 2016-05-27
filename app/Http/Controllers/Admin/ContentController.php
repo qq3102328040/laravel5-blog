@@ -45,6 +45,7 @@ class ContentController extends Controller
     {
         $cid = Content::create($request->postFillCreateData())->cid;
         $this->storeCategory($cid, $request->postFillCategoryData());
+        $this->storeTag($cid, $request->postFillTagData());
         return redirect()->route('admin.content.index');
     }
 
@@ -110,6 +111,26 @@ class ContentController extends Controller
             }
         }
     }
-    
+
+    public function storeTag($cid, $tags)
+    {
+        if($tags){
+            foreach ($tags as $tag){
+                $tagModel = Meta::tag()->where(['name' => $tag])->first();
+                if($tagModel){
+                    $mid = $tagModel->mid;
+                    $tagModel->count++;
+                    $tagModel->save();
+                }else{
+                    $mid = Meta::create([
+                        'name' => $tag,
+                        'type' => 'tag',
+                        'count' => 1
+                    ])->mid;
+                }
+                Relationship::create(['cid' =>$cid, 'mid' => $mid]);
+            }
+        }
+    }
     
 }

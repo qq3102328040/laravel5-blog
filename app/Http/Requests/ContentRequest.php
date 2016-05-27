@@ -36,20 +36,21 @@ class ContentRequest extends Request
         return [
             'title' => $this->title,
             'text' => $this->text,
-            'category' => $this->category,
-            'tag' => $this->tag,
             'author' => Auth::id(),
             'last_edit_time' => Carbon::now(),
         ];
     }
 
     public function postFillCategoryData(){
-        return $this->category;
+        $categorys = $this->category;
+        return $categorys;
     }
 
     public function postFillTagData(){
-        return [
-            'tag' => $this->tag,
-        ];
+        $tags = $this->tag;
+        $tags = trim($tags);
+        $tags = trim($tags, ';');
+        $tags = explode(';', $tags);
+        return $tags;
     }
 }

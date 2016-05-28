@@ -68,12 +68,20 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        $cid = $content = Content::where(['cid' => $id])->first()->cid;
+        $content = Content::where(['cid' => $id])->first();
+        $cid = $content->cid;
         $categorys = $this->getCategory();
+        
         $relationshipsChecked = $this->relationshipsChecked($cid);
         $categorysChecked = $relationshipsChecked['categorys'];
-        $tagsChecked = $relationshipsChecked['tags'];
-        return view('admin.content.edit', compact('content', 'categorys'));
+        $tagsChecked = '';
+
+        //处理tags, 分号隔开变成字符串
+        foreach ($relationshipsChecked['tags'] as $tag) {
+            $tagsChecked .= $tag->name.';';
+        }
+        $tagsChecked = trim($tagsChecked, ';');
+        
         return view('admin.content.edit', compact('content', 'categorys', 'categorysChecked', 'tagsChecked'));
     }
 

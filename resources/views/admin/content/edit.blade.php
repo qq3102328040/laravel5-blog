@@ -5,5 +5,5 @@
 @stop
 
 @section('body')
-    @include('admin.content.content', ['h2title' => '修改文章', 'button' => '发布修改', ['content' => $content]])
+    @include('admin.content.content', ['h2title' => '修改文章', 'button' => '发布修改', ['content' => $content, 'categorysChecked' => $categorysChecked, 'tagsChecked', $tagsChecked]])
 @stop

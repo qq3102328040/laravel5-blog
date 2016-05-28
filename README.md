@@ -210,3 +210,7 @@ public $timestamps = false;
 ###2016年05月28日
 
 ####添加了relationship和meta的关联模型
+
+###2016年05月29日
+
+####完成修改文章关联分类和标签

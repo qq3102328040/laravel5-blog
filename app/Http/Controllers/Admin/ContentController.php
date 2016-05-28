@@ -68,9 +68,13 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        $content = Content::where(['cid' => $id])->first();
+        $cid = $content = Content::where(['cid' => $id])->first()->cid;
         $categorys = $this->getCategory();
+        $relationshipsChecked = $this->relationshipsChecked($cid);
+        $categorysChecked = $relationshipsChecked['categorys'];
+        $tagsChecked = $relationshipsChecked['tags'];
         return view('admin.content.edit', compact('content', 'categorys'));
+        return view('admin.content.edit', compact('content', 'categorys', 'categorysChecked', 'tagsChecked'));
     }
 
     /**
@@ -131,6 +135,24 @@ class ContentController extends Controller
                 Relationship::create(['cid' =>$cid, 'mid' => $mid]);
             }
         }
+    }
+
+    public function relationshipsChecked($cid)
+    {
+        $categorys = [];
+        $tags = [];
+        $relationships = Relationship::where(['cid' => $cid])->get();
+        foreach ($relationships as $relationship){
+            if($relationship->meta->type == 'category'){
+                $categorys[] = $relationship->meta;
+            }elseif ($relationship->meta->type == 'tag'){
+                $tags[] = $relationship->meta;
+            }
+        }
+        return [
+            'categorys' => $categorys,
+            'tags' => $tags,
+        ];
     }
     
 }

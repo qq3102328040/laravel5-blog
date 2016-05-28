@@ -206,3 +206,7 @@ protected $primaryKey = 'id';
 public $timestamps = false;
 ```
 解决
+
+###2016年05月28日
+
+####添加了relationship和meta的关联模型

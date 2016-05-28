@@ -11,4 +11,9 @@ class Relationship extends Model
     protected $fillable = ['cid', 'mid'];
 
     public $timestamps = false;
+
+    public function meta()
+    {
+        return $this->hasOne('App\Meta', 'mid', 'mid');
+    }
 }

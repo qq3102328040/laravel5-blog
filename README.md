@@ -214,3 +214,8 @@ public $timestamps = false;
 ###2016年05月29日
 
 ####完成修改文章关联分类和标签
+
+###2016年05月30日
+
+问题
+ 1. 想用gulp引入bootstrap, 但我的package.json里面就两行, 为什么执行npm install的时候跑了那么长时间. 都跑了几百兆了..日了狗了, 根本停不下来

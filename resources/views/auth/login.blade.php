@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/auth/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
     <meta charset="UTF-8">
     <title>Login</title>
 </head>

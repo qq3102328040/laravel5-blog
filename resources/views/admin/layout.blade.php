@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     @yield('title')
     <title>Admin</title>
-    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/admin/layout.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     @yield('style')
 </head>
 <body>
@@ -16,7 +17,8 @@
 
     @yield('script')
 
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('js/jquery.min.js') }}">
+    <link rel="stylesheet" href="{{ asset('js/bootstrap.min.js') }}">
+
 </body>
 </html>

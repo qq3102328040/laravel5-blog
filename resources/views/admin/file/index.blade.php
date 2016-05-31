@@ -41,7 +41,7 @@
                 <tbody>
                     @foreach($subfolders as $path => $name)
                     <tr>
-                        <td><a href="/admin/file/index?folder={{ $path }}">{{ $name }}</a></td>
+                        <td><a href="/admin/file/index?folder={{ $path }}"><i class="fa fa-folder"></i> {{ $name }}</a></td>
                         <td>文件夹</td>
                         <td></td>
                         <td></td>
@@ -54,7 +54,7 @@
                     @endforeach
                     @foreach($files as $file)
                     <tr>
-                        <td>{{ $file['name'] }}</td>
+                        <td><i class="fa fa-file"></i> {{ $file['name'] }}</td>
                         <td>{{ $file['mimeType'] }}</td>
                         <td>{{ $file['modified'] }}</td>
                         <td>{{ $file['size'] }}</td>

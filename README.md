@@ -219,3 +219,7 @@ public $timestamps = false;
 
 问题
  1. 想用gulp引入bootstrap, 但我的package.json里面就两行, 为什么执行npm install的时候跑了那么长时间. 都跑了几百兆了..日了狗了, 根本停不下来
+
+###2016年05月31日
+
+引入了bootstrap和font-awesome, 给文件列表加了图标

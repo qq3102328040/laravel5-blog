@@ -19,7 +19,9 @@
             <td>
                 <button type="button" class="btn btn-success btn-xs" onclick="">访问</button>
                 <button type="button" class="btn btn-primary btn-xs" onclick="location.href='{{ action('Admin\CategoryController@edit', $category->mid) }}'">修改</button>
-                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">删除</button>
+                @include('admin.extra.delete_model', ['targetUrl' => action('Admin\CategoryController@destroy', $category->mid)])
             </td>
         </tr>
         @endforeach

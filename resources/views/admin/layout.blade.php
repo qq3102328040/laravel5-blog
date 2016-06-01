@@ -17,8 +17,8 @@
 
     @yield('script')
 
-    <link rel="stylesheet" href="{{ asset('js/jquery.min.js') }}">
-    <link rel="stylesheet" href="{{ asset('js/bootstrap.min.js') }}">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 </body>
 </html>

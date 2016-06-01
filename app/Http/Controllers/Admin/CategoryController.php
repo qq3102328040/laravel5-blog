@@ -93,6 +93,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Meta::category()->where(['mid' => $id])->delete());
+        return redirect(route('admin.category.index'));
     }
 }
